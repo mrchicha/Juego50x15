@@ -201,13 +201,13 @@ public class PnJugar extends javax.swing.JPanel {
                                 .addComponent(btnComodin))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(24, 24, 24)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(btnA, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnB, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(70, 70, 70)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnC, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnD, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(btnA, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
+                                    .addComponent(btnB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(28, 28, 28)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(btnD, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)
+                                    .addComponent(btnC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -412,10 +412,10 @@ public class PnJugar extends javax.swing.JPanel {
         contadorPreguntas++;
         azar = numAleatorio();
          
-        btnA.setForeground(Color.black);
-        btnB.setForeground(Color.black);
-        btnC.setForeground(Color.black);
-        btnD.setForeground(Color.black);
+        btnA.setEnabled(true);
+        btnB.setEnabled(true);
+        btnC.setEnabled(true);
+        btnD.setEnabled(true);
         
         lblPregunta.setText(jframePrincipal.getGrupoPreguntas().preguntas.get(azar).pregunta);
         btnA.setText(jframePrincipal.getGrupoPreguntas().preguntas.get(azar).respuesta1);
@@ -451,11 +451,12 @@ public class PnJugar extends javax.swing.JPanel {
     
     //método para volver el programa al punto de inicio tal y como se inicia
     public void volverMenu(){
-        try {
+       /* try {
             crono.join();
         } catch (InterruptedException ex) {
             Logger.getLogger(PnJugar.class.getName()).log(Level.SEVERE, null, ex);
         }
+*/
        jframePrincipal.getContentPane().removeAll();
         
        jframePrincipal.setPanelInicio(new PnInicio(jframePrincipal));
@@ -499,23 +500,23 @@ public class PnJugar extends javax.swing.JPanel {
                 
         if(!btnA.getText().equalsIgnoreCase(lblRespuesta.getText()) && cont<2){
            cont++;
-           btnA.setForeground(Color.red);
+           btnA.setEnabled(false);
           
         }
         if(!btnB.getText().equalsIgnoreCase(lblRespuesta.getText()) && cont<2){
            cont++;
            
-           btnB.setForeground(Color.red);
+           btnB.setEnabled(false);
         }
         if(!btnC.getText().equalsIgnoreCase(lblRespuesta.getText()) && cont<2){
            cont++;
            
-           btnC.setForeground(Color.red);
+           btnC.setEnabled(false);
         }
         if(!btnD.getText().equalsIgnoreCase(lblRespuesta.getText()) && cont<2){
            cont++;
            
-           btnD.setForeground(Color.red);
+           btnD.setEnabled(false);
         }
     }
 
