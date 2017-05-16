@@ -9,6 +9,8 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -288,7 +290,10 @@ public class PnJugar extends javax.swing.JPanel {
         btnGroup.clearSelection();
         btnAceptar.setEnabled(true);
             
-       
+        btnA.setBackground(Color.LIGHT_GRAY);
+        btnB.setBackground(Color.LIGHT_GRAY);
+        btnC.setBackground(Color.LIGHT_GRAY);
+        btnD.setBackground(Color.LIGHT_GRAY);
        //crono.start();
        
     
@@ -446,6 +451,11 @@ public class PnJugar extends javax.swing.JPanel {
     
     //método para volver el programa al punto de inicio tal y como se inicia
     public void volverMenu(){
+        try {
+            crono.join();
+        } catch (InterruptedException ex) {
+            Logger.getLogger(PnJugar.class.getName()).log(Level.SEVERE, null, ex);
+        }
        jframePrincipal.getContentPane().removeAll();
         
        jframePrincipal.setPanelInicio(new PnInicio(jframePrincipal));
@@ -477,7 +487,10 @@ public class PnJugar extends javax.swing.JPanel {
     //Método para comprobar contestación correcta y que ahs ganado si es correcta la respuesta en la ronda 15
     public void correcto(){
          btnSiguientePregunta.setEnabled(true);
-
+         if(btnA.getText().equalsIgnoreCase(lblRespuesta.getText())) btnA.setBackground(Color.green);
+         if(btnB.getText().equalsIgnoreCase(lblRespuesta.getText())) btnB.setBackground(Color.green);
+         if(btnC.getText().equalsIgnoreCase(lblRespuesta.getText())) btnC.setBackground(Color.green);
+         if(btnD.getText().equalsIgnoreCase(lblRespuesta.getText())) btnD.setBackground(Color.green);
                
     }
    

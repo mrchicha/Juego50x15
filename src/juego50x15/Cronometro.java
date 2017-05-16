@@ -6,6 +6,8 @@
 package juego50x15;
 
 import java.awt.Color;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
@@ -44,16 +46,21 @@ public class Cronometro extends Thread{
            if(cont<=10)crono.setForeground(Color.red);
            else crono.setForeground(Color.black);
            if (cont==0){
-           JOptionPane.showMessageDialog(panelJugar,"Fin de tiempo, Has perdido"); 
-           jframePrincipal.getContentPane().removeAll();
-                      
-           respuesta =JOptionPane.showConfirmDialog(panelJugar, "¿Desea volver a jugar? Pulse cancelar para salir...");
-           if(respuesta == JOptionPane.YES_OPTION)panelJugar.volverJugar();
-           if(respuesta == JOptionPane.NO_OPTION)panelJugar.volverMenu();
-           if(respuesta == JOptionPane.CANCEL_OPTION) System.exit(0);
-          
-           jframePrincipal.validate();
-           jframePrincipal.repaint();
+               try {
+                    this.join();
+               }catch (InterruptedException ex) {
+                Logger.getLogger(PnJugar.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                JOptionPane.showMessageDialog(panelJugar,"Fin de tiempo, Has perdido"); 
+                jframePrincipal.getContentPane().removeAll();
+
+                respuesta =JOptionPane.showConfirmDialog(panelJugar, "¿Desea volver a jugar? Pulse cancelar para salir...");
+                if(respuesta == JOptionPane.YES_OPTION)panelJugar.volverJugar();
+                if(respuesta == JOptionPane.NO_OPTION)panelJugar.volverMenu();
+                if(respuesta == JOptionPane.CANCEL_OPTION) System.exit(0);
+
+                jframePrincipal.validate();
+                jframePrincipal.repaint();
            }
        }
        

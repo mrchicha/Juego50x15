@@ -52,6 +52,8 @@ public class PnListarPreguntas extends javax.swing.JPanel {
         jLabel7 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(51, 102, 255));
+
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = {  };
             public int getSize() { return strings.length; }
@@ -88,6 +90,7 @@ public class PnListarPreguntas extends javax.swing.JPanel {
 
         lblNiv.setText(" ");
 
+        jButton1.setBackground(new java.awt.Color(0, 51, 255));
         jButton1.setText("Editar preguntas");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -95,6 +98,7 @@ public class PnListarPreguntas extends javax.swing.JPanel {
             }
         });
 
+        jButton2.setBackground(new java.awt.Color(0, 51, 255));
         jButton2.setText("Buscar pregunta");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -106,6 +110,7 @@ public class PnListarPreguntas extends javax.swing.JPanel {
 
         jLabel7.setText("Buscar preguntas por palabra:");
 
+        jButton3.setBackground(new java.awt.Color(0, 51, 255));
         jButton3.setText("Resetear búsqueda");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -271,7 +276,5 @@ public class PnListarPreguntas extends javax.swing.JPanel {
         }
 
         jList1.setModel(listaString);
-    }
-    
-    
+    }   
 }
