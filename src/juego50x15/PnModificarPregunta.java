@@ -22,6 +22,7 @@ public class PnModificarPregunta extends javax.swing.JPanel {
     private JFramePrincipal jframePrincipal;
     private PnIntroducirPreguntas panelIntroducirPregunta;
     private Pregunta nuevaPregunta;
+    private PnInicio panelInicio;
     private int indicePregunta;
     
     public PnModificarPregunta(JFramePrincipal jframePrincipal) {
@@ -327,6 +328,8 @@ public class PnModificarPregunta extends javax.swing.JPanel {
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         jframePrincipal.getContentPane().removeAll();
+        panelInicio=new PnInicio(jframePrincipal);
+        jframePrincipal.add(panelInicio);
         jframePrincipal.validate();
         jframePrincipal.repaint();
     }//GEN-LAST:event_btnSalirActionPerformed

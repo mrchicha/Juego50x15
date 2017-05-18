@@ -249,6 +249,7 @@ public class PnIntroducirPreguntas extends javax.swing.JPanel {
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         
         jframePrincipal.getContentPane().removeAll();
+        
         jframePrincipal.validate();
         jframePrincipal.repaint();
     }//GEN-LAST:event_btnSalirActionPerformed

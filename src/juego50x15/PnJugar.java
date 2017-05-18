@@ -31,6 +31,7 @@ public class PnJugar extends javax.swing.JPanel {
     private final int rondaFinal=15;
     private int[] premio={100,500,700,1000,1500,2000,3000,4000,5000,10000,15000,20000,25000,50000,100000};
     private ArrayList<Integer> numGenerados;
+    private boolean relojActivo;
     
     
     
@@ -51,7 +52,7 @@ public class PnJugar extends javax.swing.JPanel {
         btnComodin50.setVisible(false);
         btnComodinLlamada.setVisible(false);
         
-       
+       relojActivo=true;
        crono=new Cronometro(jframePrincipal,this,lblReloj);
        crono.start();
                   
@@ -120,7 +121,7 @@ public class PnJugar extends javax.swing.JPanel {
         });
 
         btnSiguientePregunta.setBackground(new java.awt.Color(51, 204, 255));
-        btnSiguientePregunta.setText("Siguiente");
+        btnSiguientePregunta.setText("Siguiente Pregunta");
         btnSiguientePregunta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSiguientePreguntaActionPerformed(evt);
@@ -182,7 +183,7 @@ public class PnJugar extends javax.swing.JPanel {
                                     .addComponent(lblValorAcumulado, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(233, 233, 233))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(0, 77, Short.MAX_VALUE)
+                                .addGap(0, 107, Short.MAX_VALUE)
                                 .addComponent(lblRespuesta, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(171, 171, 171)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -217,7 +218,7 @@ public class PnJugar extends javax.swing.JPanel {
                                 .addGap(11, 11, 11))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(btnSiguientePregunta)
+                                    .addComponent(btnSiguientePregunta, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(btnComodinPublico, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(btnComodin50, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -254,29 +255,31 @@ public class PnJugar extends javax.swing.JPanel {
                             .addComponent(btnD, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(lblRespuesta, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnAceptar)
+                            .addComponent(btnComodin))
+                        .addGap(47, 47, 47))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(62, 62, 62)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(lblReloj, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnComodinPublico)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnComodin50)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnComodinLlamada)
-                        .addGap(42, 42, 42)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAceptar)
-                    .addComponent(btnComodin)
-                    .addComponent(btnSiguientePregunta))
-                .addGap(33, 33, 33))
+                        .addGap(33, 33, 33)
+                        .addComponent(btnSiguientePregunta, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(42, 42, 42))))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSiguientePreguntaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguientePreguntaActionPerformed
-       
+        lblReloj.setEnabled(true);
+        lblReloj.setVisible(true);
         lblValorAcumulado.setText(valorAsegurado());
         cargarPregunta(jframePrincipal.getGrupoPreguntas());
         btnSiguientePregunta.setEnabled(false);
@@ -295,18 +298,18 @@ public class PnJugar extends javax.swing.JPanel {
         btnC.setBackground(Color.LIGHT_GRAY);
         btnD.setBackground(Color.LIGHT_GRAY);
        //crono.start();
-       
-    
+       crono.reset();
+       relojActivo=true;
     }//GEN-LAST:event_btnSiguientePreguntaActionPerformed
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
         int respuesta;
-       
+        relojActivo=false;
         if(contadorPreguntas==rondaFinal){
             btnSiguientePregunta.setEnabled(false);
             lblPremioAsegurado.setText(valorAsegurado());
             
-            crono.suspend();
+            
             
             panelVictoria=new PnVictoria(this,jframePrincipal);
             panelVictoria.setVisible(true);
@@ -342,6 +345,8 @@ public class PnJugar extends javax.swing.JPanel {
 
             }
             
+            
+            lblReloj.setVisible(false);
             btnAceptar.setEnabled(false);     
         }
         
@@ -426,8 +431,8 @@ public class PnJugar extends javax.swing.JPanel {
         
         lblNumPregunta.setText(""+contadorPreguntas);
         lblValorPregunta.setText(""+premio[contadorPreguntas-1]);
-              
-        if(contadorPreguntas>1)crono.reset();
+        
+        
              
         
     }
@@ -585,6 +590,20 @@ public class PnJugar extends javax.swing.JPanel {
 
     public JLabel getLblPremioAsegurado() {
         return lblPremioAsegurado;
+    }
+
+    /**
+     * @return the relojActivo
+     */
+    public boolean isRelojActivo() {
+        return relojActivo;
+    }
+
+    /**
+     * @param relojActivo the relojActivo to set
+     */
+    public void setRelojActivo(boolean relojActivo) {
+        this.relojActivo = relojActivo;
     }
 
 }

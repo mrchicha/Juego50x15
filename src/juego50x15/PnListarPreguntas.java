@@ -19,10 +19,12 @@ import javax.swing.JList;
 public class PnListarPreguntas extends javax.swing.JPanel {
     
     private JFramePrincipal jframePrincipal;
-   
+    private boolean busqueda;
+    private ArrayList<Pregunta> encontradas;
+    
     public PnListarPreguntas(JFramePrincipal jframePrincipal) {
         initComponents();
-        
+        busqueda=false;
         this.jframePrincipal=jframePrincipal;
         cargarPreguntas();
     }
@@ -204,14 +206,25 @@ public class PnListarPreguntas extends javax.swing.JPanel {
     private void jList1ValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jList1ValueChanged
         
         int indice=jList1.getSelectedIndex();
-        
+        if( busqueda==false){
         lblA.setText(jframePrincipal.getGrupoPreguntas().preguntas.get(indice).respuesta1);
         lblB.setText(jframePrincipal.getGrupoPreguntas().preguntas.get(indice).respuesta2);
         lblC.setText(jframePrincipal.getGrupoPreguntas().preguntas.get(indice).respuesta3);
         lblD.setText(jframePrincipal.getGrupoPreguntas().preguntas.get(indice).respuesta4);
         lblSol.setText(jframePrincipal.getGrupoPreguntas().preguntas.get(indice).solucion);
         
-        lblNiv.setText(Integer.toOctalString(jframePrincipal.getGrupoPreguntas().preguntas.get(indice).nivel));
+        lblNiv.setText(Integer.toOctalString(jframePrincipal.getGrupoPreguntas().preguntas.get(indice).nivel)); 
+        }
+        else if(busqueda=true){
+        
+        lblA.setText(encontradas.get(indice).respuesta1);
+        lblB.setText(encontradas.get(indice).respuesta2);
+        lblC.setText(encontradas.get(indice).respuesta3);
+        lblD.setText(encontradas.get(indice).respuesta4);
+        lblSol.setText(encontradas.get(indice).solucion);
+        
+        lblNiv.setText(Integer.toOctalString(encontradas.get(indice).nivel));
+        }
     }//GEN-LAST:event_jList1ValueChanged
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -220,8 +233,8 @@ public class PnListarPreguntas extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-       
-        ArrayList<Pregunta> encontradas=new ArrayList<Pregunta>();
+        busqueda=true;
+        encontradas=new ArrayList<Pregunta>();
         String palabraBuscar=jTextField1.getText();
         
         for(int ind=0;ind<jframePrincipal.getGrupoPreguntas().preguntas.size();ind++){
@@ -241,6 +254,7 @@ public class PnListarPreguntas extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        
         jTextField1.setText("");
         cargarPreguntas();
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -269,6 +283,7 @@ public class PnListarPreguntas extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     public void cargarPreguntas(){
+        busqueda=false;
         DefaultListModel listaString = new DefaultListModel();
 
         for(int  ind= 0; ind<jframePrincipal.getGrupoPreguntas().preguntas.size();ind++){

@@ -45,12 +45,8 @@ public class Cronometro extends Thread{
            
            if(cont<=10)crono.setForeground(Color.red);
            else crono.setForeground(Color.black);
-           if (cont==0){
-               try {
-                    this.join();
-               }catch (InterruptedException ex) {
-                Logger.getLogger(PnJugar.class.getName()).log(Level.SEVERE, null, ex);
-                }
+           if (cont==0 && panelJugar.isRelojActivo()==true){
+               
                 JOptionPane.showMessageDialog(panelJugar,"Fin de tiempo, Has perdido"); 
                 jframePrincipal.getContentPane().removeAll();
 
@@ -61,6 +57,8 @@ public class Cronometro extends Thread{
 
                 jframePrincipal.validate();
                 jframePrincipal.repaint();
+               
+               
            }
        }
        
@@ -71,6 +69,7 @@ public class Cronometro extends Thread{
         
     }
     
+        
     public void setActivo(boolean activo) {
         this.activo = activo;
     }
