@@ -40,7 +40,7 @@ public class PnJugar extends javax.swing.JPanel {
        
         this.jframePrincipal=jframePrincipal;
         lblRespuesta.setVisible(false);
-        btnSiguientePregunta.setEnabled(false);
+       
         numGenerados=new ArrayList<Integer>();
         //setIconImage(new ImageIcon(getClass().getResource("/imagenes/dinero5.jpg")).getImage());
         btnGroup.add(btnA);
@@ -75,7 +75,6 @@ public class PnJugar extends javax.swing.JPanel {
         jLabel8 = new javax.swing.JLabel();
         btnAceptar = new javax.swing.JButton();
         btnComodin = new javax.swing.JButton();
-        btnSiguientePregunta = new javax.swing.JButton();
         lblRespuesta = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         lblReloj = new javax.swing.JLabel();
@@ -106,7 +105,7 @@ public class PnJugar extends javax.swing.JPanel {
         jLabel8.setText("Total acumulado");
 
         btnAceptar.setBackground(new java.awt.Color(51, 204, 255));
-        btnAceptar.setText("Aceptar");
+        btnAceptar.setText("Elegir respuesta");
         btnAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAceptarActionPerformed(evt);
@@ -118,14 +117,6 @@ public class PnJugar extends javax.swing.JPanel {
         btnComodin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnComodinActionPerformed(evt);
-            }
-        });
-
-        btnSiguientePregunta.setBackground(new java.awt.Color(51, 204, 255));
-        btnSiguientePregunta.setText("Siguiente Pregunta");
-        btnSiguientePregunta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSiguientePreguntaActionPerformed(evt);
             }
         });
 
@@ -158,12 +149,32 @@ public class PnJugar extends javax.swing.JPanel {
         });
 
         btnB.setText(" ");
+        btnB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBActionPerformed(evt);
+            }
+        });
 
         btnC.setText(" ");
+        btnC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCActionPerformed(evt);
+            }
+        });
 
         btnD.setText(" ");
+        btnD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDActionPerformed(evt);
+            }
+        });
 
         btnA.setText(" ");
+        btnA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -174,42 +185,34 @@ public class PnJugar extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblValorPregunta, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel3))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lblValorAcumulado, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(233, 233, 233))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(0, 107, Short.MAX_VALUE)
-                                .addComponent(lblRespuesta, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(171, 171, 171)))
+                            .addComponent(lblValorPregunta, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblValorAcumulado, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(233, 233, 233)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(lblPremioAsegurado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(btnAceptar, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(lblNumPregunta, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(lblPregunta, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(249, 249, 249)
-                                .addComponent(btnComodin))
+                                .addComponent(lblNumPregunta, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblPregunta, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(24, 24, 24)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(btnA, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
-                                    .addComponent(btnB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(28, 28, 28)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(btnD, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)
-                                    .addComponent(btnC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(btnA, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
+                                            .addComponent(btnB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addGap(28, 28, 28)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(btnD, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)
+                                            .addComponent(btnC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -218,13 +221,17 @@ public class PnJugar extends javax.swing.JPanel {
                                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(11, 11, 11))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(btnSiguientePregunta, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(btnComodinPublico, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(btnComodin50, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(btnComodinLlamada, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                .addGap(61, 61, 61)))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(btnComodinPublico, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnComodin50, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnComodinLlamada, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(61, 61, 61))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 166, Short.MAX_VALUE)
+                        .addComponent(lblRespuesta, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnComodin, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(59, 59, 59)))
                 .addGap(43, 43, 43))
         );
         layout.setVerticalGroup(
@@ -256,11 +263,7 @@ public class PnJugar extends javax.swing.JPanel {
                             .addComponent(btnD, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(lblRespuesta, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnAceptar)
-                            .addComponent(btnComodin))
-                        .addGap(47, 47, 47))
+                        .addGap(41, 41, 41))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(62, 62, 62)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -272,42 +275,23 @@ public class PnJugar extends javax.swing.JPanel {
                         .addComponent(btnComodin50)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnComodinLlamada)
-                        .addGap(33, 33, 33)
-                        .addComponent(btnSiguientePregunta, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(42, 42, 42))))
+                        .addGap(25, 25, 25)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnComodin, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(44, 44, 44))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnSiguientePreguntaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguientePreguntaActionPerformed
-        lblReloj.setEnabled(true);
-        lblReloj.setVisible(true);
-        lblValorAcumulado.setText(valorAsegurado());
-        cargarPregunta(jframePrincipal.getGrupoPreguntas());
-        btnSiguientePregunta.setEnabled(false);
-        
-        
-        if(lblNumPregunta.getText().equalsIgnoreCase("6"))lblPremioAsegurado.setText(lblValorAcumulado.getText());
-        if(lblNumPregunta.getText().equalsIgnoreCase("11"))lblPremioAsegurado.setText(lblValorAcumulado.getText());
-        
-        //resetea campos cada vez que ejecutamos el evento para generar un panel nuevo
-        
-        btnGroup.clearSelection();
-        btnAceptar.setEnabled(true);
-            
-        btnA.setBackground(Color.LIGHT_GRAY);
-        btnB.setBackground(Color.LIGHT_GRAY);
-        btnC.setBackground(Color.LIGHT_GRAY);
-        btnD.setBackground(Color.LIGHT_GRAY);
-       //crono.start();
-       crono.reset();
-       relojActivo=true;
-    }//GEN-LAST:event_btnSiguientePreguntaActionPerformed
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
         int respuesta;
         relojActivo=false;
+        
+        if(btnA.isSelected() || btnB.isSelected() || btnC.isSelected() || btnD.isSelected()){
+            
+        
         if(contadorPreguntas==rondaFinal){
-            btnSiguientePregunta.setEnabled(false);
+           
             lblPremioAsegurado.setText(valorAsegurado());
             
                       
@@ -327,7 +311,7 @@ public class PnJugar extends javax.swing.JPanel {
                     || (btnC.isSelected() && btnC.getText().equalsIgnoreCase(lblRespuesta.getText())) 
                     || (btnD.isSelected() && btnD.getText().equalsIgnoreCase(lblRespuesta.getText())))
                     {
-                correcto();
+                
             }
 
             else{
@@ -348,8 +332,15 @@ public class PnJugar extends javax.swing.JPanel {
             btnAceptar.setEnabled(false);     
         }
         
-        
-         
+        siguientePreguntaPanel();
+        }
+        else{
+            try {
+                throw new ElegirRespuestaException();
+            } catch (ElegirRespuestaException ex) {
+                JOptionPane.showMessageDialog(jframePrincipal, ex, "No ha seleccionado ninguna respuesta", JOptionPane.ERROR_MESSAGE);
+            }
+        }
     }//GEN-LAST:event_btnAceptarActionPerformed
 
     private void btnComodinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComodinActionPerformed
@@ -379,6 +370,26 @@ public class PnJugar extends javax.swing.JPanel {
         
     }//GEN-LAST:event_btnComodinLlamadaActionPerformed
 
+    private void btnAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAActionPerformed
+        // TODO add your handling code here:
+        colorRespuesta();
+    }//GEN-LAST:event_btnAActionPerformed
+
+    private void btnCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCActionPerformed
+        // TODO add your handling code here:
+        colorRespuesta();
+    }//GEN-LAST:event_btnCActionPerformed
+
+    private void btnBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBActionPerformed
+        // TODO add your handling code here:
+        colorRespuesta();
+    }//GEN-LAST:event_btnBActionPerformed
+
+    private void btnDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDActionPerformed
+        // TODO add your handling code here:
+        colorRespuesta();
+    }//GEN-LAST:event_btnDActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup bgResp;
@@ -392,7 +403,6 @@ public class PnJugar extends javax.swing.JPanel {
     private javax.swing.JButton btnComodinPublico;
     private javax.swing.JToggleButton btnD;
     private javax.swing.ButtonGroup btnGroup;
-    private javax.swing.JButton btnSiguientePregunta;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel7;
@@ -452,6 +462,37 @@ public class PnJugar extends javax.swing.JPanel {
         this.validate();
 }        
     
+    public void colorRespuesta(){
+        if(btnA.isSelected()){
+            btnA.setBackground(Color.green);
+            btnB.setBackground(Color.LIGHT_GRAY);
+            btnC.setBackground(Color.LIGHT_GRAY);
+            btnD.setBackground(Color.LIGHT_GRAY);
+        }
+   
+        if(btnC.isSelected()){
+            btnC.setBackground(Color.green);
+            btnA.setBackground(Color.LIGHT_GRAY);
+            btnB.setBackground(Color.LIGHT_GRAY);
+            btnD.setBackground(Color.LIGHT_GRAY);
+        }
+    
+        if(btnB.isSelected()){
+            btnB.setBackground(Color.green);
+            btnA.setBackground(Color.LIGHT_GRAY);
+            btnC.setBackground(Color.LIGHT_GRAY);
+            btnD.setBackground(Color.LIGHT_GRAY);
+        }
+   
+        if(btnD.isSelected()){
+            btnD.setBackground(Color.green);
+            btnA.setBackground(Color.LIGHT_GRAY);
+            btnB.setBackground(Color.LIGHT_GRAY);
+            btnC.setBackground(Color.LIGHT_GRAY);
+        
+        }
+    }
+    
     //método para volver el programa al punto de inicio tal y como se inicia
     public void volverMenu(){
        /* try {
@@ -489,15 +530,7 @@ public class PnJugar extends javax.swing.JPanel {
     }
     
     //Método para comprobar contestación correcta y que ahs ganado si es correcta la respuesta en la ronda 15
-    public void correcto(){
-         btnSiguientePregunta.setEnabled(true);
-         if(btnA.getText().equalsIgnoreCase(lblRespuesta.getText())) btnA.setBackground(Color.green);
-         if(btnB.getText().equalsIgnoreCase(lblRespuesta.getText())) btnB.setBackground(Color.green);
-         if(btnC.getText().equalsIgnoreCase(lblRespuesta.getText())) btnC.setBackground(Color.green);
-         if(btnD.getText().equalsIgnoreCase(lblRespuesta.getText())) btnD.setBackground(Color.green);
-               
-    }
-   
+      
     public void comodines(){
         int cont=0;
                 
@@ -544,6 +577,30 @@ public class PnJugar extends javax.swing.JPanel {
         return valorAcumulado;
     }
     
+    public void siguientePreguntaPanel(){
+        lblReloj.setEnabled(true);
+        lblReloj.setVisible(true);
+        lblValorAcumulado.setText(valorAsegurado());
+        cargarPregunta(jframePrincipal.getGrupoPreguntas());
+        
+        
+        
+        if(lblNumPregunta.getText().equalsIgnoreCase("6"))lblPremioAsegurado.setText(lblValorAcumulado.getText());
+        if(lblNumPregunta.getText().equalsIgnoreCase("11"))lblPremioAsegurado.setText(lblValorAcumulado.getText());
+        
+        //resetea campos cada vez que ejecutamos el evento para generar un panel nuevo
+        
+        btnGroup.clearSelection();
+        btnAceptar.setEnabled(true);
+            
+        btnA.setBackground(Color.LIGHT_GRAY);
+        btnB.setBackground(Color.LIGHT_GRAY);
+        btnC.setBackground(Color.LIGHT_GRAY);
+        btnD.setBackground(Color.LIGHT_GRAY);
+       
+        crono.reset();
+        relojActivo=true;
+    }
       
     /**
      * @return the relojActivo

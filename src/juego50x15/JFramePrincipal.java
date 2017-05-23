@@ -29,7 +29,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
     private PnInicio panelInicio;
     
     private int contadorPreguntas=0,contadorDineroAcumulado=0,valorAcumulado=0,indicePreguntas=0;
-    private int[] premio={100,200,500,800,1000,2000,3000,4000,5000,8000,15000,20000,25000,30000,50000};
+    
     
        
     public JFramePrincipal() {
