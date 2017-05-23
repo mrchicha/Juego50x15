@@ -52,9 +52,10 @@ public class PnJugar extends javax.swing.JPanel {
         btnComodin50.setVisible(false);
         btnComodinLlamada.setVisible(false);
         
-       relojActivo=true;
-       crono=new Cronometro(jframePrincipal,this,lblReloj);
-       crono.start();
+        relojActivo=true;
+        crono=new Cronometro(jframePrincipal,this,lblReloj);
+        crono.start();
+        
                   
     }
      
@@ -309,8 +310,7 @@ public class PnJugar extends javax.swing.JPanel {
             btnSiguientePregunta.setEnabled(false);
             lblPremioAsegurado.setText(valorAsegurado());
             
-            
-            
+                      
             panelVictoria=new PnVictoria(this,jframePrincipal);
             panelVictoria.setVisible(true);
             panelVictoria.setSize(800, 600);
@@ -319,9 +319,7 @@ public class PnJugar extends javax.swing.JPanel {
             jframePrincipal.add(panelVictoria);
             jframePrincipal.validate();
             jframePrincipal.repaint();
-            
-            
-            
+                   
         }
         else{
             if((btnA.isSelected() && btnA.getText().equalsIgnoreCase(lblRespuesta.getText())) 
@@ -422,12 +420,12 @@ public class PnJugar extends javax.swing.JPanel {
         btnC.setEnabled(true);
         btnD.setEnabled(true);
         
-        lblPregunta.setText(jframePrincipal.getGrupoPreguntas().preguntas.get(azar).pregunta);
-        btnA.setText(jframePrincipal.getGrupoPreguntas().preguntas.get(azar).respuesta1);
-        btnB.setText(jframePrincipal.getGrupoPreguntas().preguntas.get(azar).respuesta2);
-        btnC.setText(jframePrincipal.getGrupoPreguntas().preguntas.get(azar).respuesta3);
-        btnD.setText(jframePrincipal.getGrupoPreguntas().preguntas.get(azar).respuesta4);
-        lblRespuesta.setText(jframePrincipal.getGrupoPreguntas().preguntas.get(azar).solucion);
+        lblPregunta.setText(jframePrincipal.getGrupoPreguntas().preguntas.get(azar).getPregunta());
+        btnA.setText(jframePrincipal.getGrupoPreguntas().preguntas.get(azar).getRespuestas()[0]);
+        btnB.setText(jframePrincipal.getGrupoPreguntas().preguntas.get(azar).getRespuestas()[1]);
+        btnC.setText(jframePrincipal.getGrupoPreguntas().preguntas.get(azar).getRespuestas()[2]);
+        btnD.setText(jframePrincipal.getGrupoPreguntas().preguntas.get(azar).getRespuestas()[3]);
+        lblRespuesta.setText(jframePrincipal.getGrupoPreguntas().preguntas.get(azar).getSolucion());
         
         lblNumPregunta.setText(""+contadorPreguntas);
         lblValorPregunta.setText(""+premio[contadorPreguntas-1]);
@@ -483,7 +481,7 @@ public class PnJugar extends javax.swing.JPanel {
      
         do{
             azar=aleatorio.nextInt(jframePrincipal.getGrupoPreguntas().preguntas.size());
-            if(!numGenerados.contains(azar) && jframePrincipal.getGrupoPreguntas().preguntas.get(azar).nivel == nivel)encontrada=true;
+            if(!numGenerados.contains(azar) && jframePrincipal.getGrupoPreguntas().preguntas.get(azar).getNivel() == nivel)encontrada=true;
         }while(!encontrada);
      
         numGenerados.add(azar);   
@@ -538,8 +536,7 @@ public class PnJugar extends javax.swing.JPanel {
     public String valorAsegurado(){
         int valor,acumulado;
         String valorAcumulado;
-        
-               
+                       
         valor=Integer.parseInt(lblValorPregunta.getText());
         acumulado=Integer.parseInt(lblValorAcumulado.getText());
         valorAcumulado=Integer.toString(valor+acumulado);
@@ -547,8 +544,23 @@ public class PnJugar extends javax.swing.JPanel {
         return valorAcumulado;
     }
     
+      
+    /**
+     * @return the relojActivo
+     */
+    public boolean isRelojActivo() {
+        return relojActivo;
+    }
+
+    /**
+     * @param relojActivo the relojActivo to set
+     */
+    public void setRelojActivo(boolean relojActivo) {
+        this.relojActivo = relojActivo;
+    }
+
     
-    public Cronometro getCrono() {
+     public Cronometro getCrono() {
         return crono;
     }
 
@@ -590,20 +602,6 @@ public class PnJugar extends javax.swing.JPanel {
 
     public JLabel getLblPremioAsegurado() {
         return lblPremioAsegurado;
-    }
-
-    /**
-     * @return the relojActivo
-     */
-    public boolean isRelojActivo() {
-        return relojActivo;
-    }
-
-    /**
-     * @param relojActivo the relojActivo to set
-     */
-    public void setRelojActivo(boolean relojActivo) {
-        this.relojActivo = relojActivo;
     }
 
 }

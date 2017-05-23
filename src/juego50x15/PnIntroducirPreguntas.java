@@ -16,6 +16,7 @@ import javax.swing.JTextField;
 public class PnIntroducirPreguntas extends javax.swing.JPanel {
     
     JFramePrincipal jframePrincipal;
+    PnInicio panelInicio;
     GestionPregunta grupoPreguntas;
     Pregunta nuevaPregunta;
     
@@ -247,9 +248,10 @@ public class PnIntroducirPreguntas extends javax.swing.JPanel {
     }
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-        
+       
         jframePrincipal.getContentPane().removeAll();
-        
+        panelInicio=new PnInicio(jframePrincipal);
+        jframePrincipal.add(panelInicio);
         jframePrincipal.validate();
         jframePrincipal.repaint();
     }//GEN-LAST:event_btnSalirActionPerformed
@@ -278,7 +280,7 @@ public void preguntaNueva(GestionPregunta grupoPreguntas) throws NumberFormatExc
     
     int nivel=Integer.parseInt(ctNivel.getText());
     
-    if(nivel<=0 && nivel>3){
+    if(nivel<=0 || nivel>3){
     throw new NumeroNoValidoException();
     }
     else if(ctPregunta.getText().isEmpty() || ctRespA.getText().isEmpty() || ctRespB.getText().isEmpty() || ctRespC.getText().isEmpty() || ctRespD.getText().isEmpty() || ctSolucion.getText().isEmpty()){
@@ -286,7 +288,7 @@ public void preguntaNueva(GestionPregunta grupoPreguntas) throws NumberFormatExc
     }
     else{
        
-        nuevaPregunta=new Pregunta(ctPregunta.getText(),ctRespA.getText(),ctRespB.getText(),ctRespC.getText(),ctRespD.getText(),ctSolucion.getText(),nivel);
+        nuevaPregunta=new Pregunta(ctPregunta.getText(),ctSolucion.getText(),nivel,ctRespA.getText(),ctRespB.getText(),ctRespC.getText(),ctRespD.getText());
         grupoPreguntas.preguntas.add(nuevaPregunta);
         ctPregunta.setText("");
         ctRespA.setText("");

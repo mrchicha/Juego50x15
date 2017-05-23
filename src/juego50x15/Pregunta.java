@@ -12,19 +12,51 @@ import java.lang.reflect.Array;
  * @author make
  */
 public class Pregunta {
-    public String pregunta,respuesta1,respuesta2,respuesta3,respuesta4,solucion;
-    public Array respuestas; 
-    public int nivel;
+    private String pregunta,solucion;
+    private String[] respuestas=new String[4]; 
+    private int nivel;
     
-    Pregunta(String pregunta,String respuesta1,String respuesta2,String respuesta3,String respuesta4,String solucion, int nivel ){
+    Pregunta(String pregunta,String solucion, int nivel, String... respuestas){
         this.pregunta=pregunta;
-        this.respuesta1=respuesta1;
-        this.respuesta2=respuesta2;
-        this.respuesta3=respuesta3;
-        this.respuesta4=respuesta4;
+        this.respuestas=respuestas;
         this.solucion=solucion;
         this.nivel=nivel;
     }
+    
+
+    public void setPregunta(String pregunta) {
+        this.pregunta = pregunta;
+    }
+
+    public void setSolucion(String solucion) {
+        this.solucion = solucion;
+    }
+
+    public void setRespuestas(String[] respuestas) {
+        this.respuestas = respuestas;
+    }
+
+    public void setNivel(int nivel) {
+        this.nivel = nivel;
+    }
+    
+
+    public String getPregunta() {
+        return pregunta;
+    }
+
+    public String getSolucion() {
+        return solucion;
+    }
+
+    public String[] getRespuestas() {
+        return respuestas;
+    }
+
+    public int getNivel() {
+        return nivel;
+    }
+    
     
     public String toString(){
         

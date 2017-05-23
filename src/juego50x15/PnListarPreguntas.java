@@ -109,6 +109,11 @@ public class PnListarPreguntas extends javax.swing.JPanel {
         });
 
         jTextField1.setText(" ");
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
 
         jLabel7.setText("Buscar preguntas por palabra:");
 
@@ -207,23 +212,23 @@ public class PnListarPreguntas extends javax.swing.JPanel {
         
         int indice=jList1.getSelectedIndex();
         if( busqueda==false){
-        lblA.setText(jframePrincipal.getGrupoPreguntas().preguntas.get(indice).respuesta1);
-        lblB.setText(jframePrincipal.getGrupoPreguntas().preguntas.get(indice).respuesta2);
-        lblC.setText(jframePrincipal.getGrupoPreguntas().preguntas.get(indice).respuesta3);
-        lblD.setText(jframePrincipal.getGrupoPreguntas().preguntas.get(indice).respuesta4);
-        lblSol.setText(jframePrincipal.getGrupoPreguntas().preguntas.get(indice).solucion);
+        lblA.setText(jframePrincipal.getGrupoPreguntas().preguntas.get(indice).getRespuestas()[0]);
+        lblB.setText(jframePrincipal.getGrupoPreguntas().preguntas.get(indice).getRespuestas()[1]);
+        lblC.setText(jframePrincipal.getGrupoPreguntas().preguntas.get(indice).getRespuestas()[2]);
+        lblD.setText(jframePrincipal.getGrupoPreguntas().preguntas.get(indice).getRespuestas()[3]);
+        lblSol.setText(jframePrincipal.getGrupoPreguntas().preguntas.get(indice).getSolucion());
         
-        lblNiv.setText(Integer.toOctalString(jframePrincipal.getGrupoPreguntas().preguntas.get(indice).nivel)); 
+        lblNiv.setText(Integer.toOctalString(jframePrincipal.getGrupoPreguntas().preguntas.get(indice).getNivel())); 
         }
         else if(busqueda=true){
         
-        lblA.setText(encontradas.get(indice).respuesta1);
-        lblB.setText(encontradas.get(indice).respuesta2);
-        lblC.setText(encontradas.get(indice).respuesta3);
-        lblD.setText(encontradas.get(indice).respuesta4);
-        lblSol.setText(encontradas.get(indice).solucion);
+        lblA.setText(encontradas.get(indice).getRespuestas()[0]);
+        lblB.setText(encontradas.get(indice).getRespuestas()[1]);
+        lblC.setText(encontradas.get(indice).getRespuestas()[2]);
+        lblD.setText(encontradas.get(indice).getRespuestas()[3]);
+        lblSol.setText(encontradas.get(indice).getSolucion());
         
-        lblNiv.setText(Integer.toOctalString(encontradas.get(indice).nivel));
+        lblNiv.setText(Integer.toOctalString(encontradas.get(indice).getNivel()));
         }
     }//GEN-LAST:event_jList1ValueChanged
 
@@ -234,11 +239,12 @@ public class PnListarPreguntas extends javax.swing.JPanel {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         busqueda=true;
+        
         encontradas=new ArrayList<Pregunta>();
         String palabraBuscar=jTextField1.getText();
         
         for(int ind=0;ind<jframePrincipal.getGrupoPreguntas().preguntas.size();ind++){
-            if(jframePrincipal.getGrupoPreguntas().preguntas.get(ind).pregunta.contains(palabraBuscar)){
+            if(jframePrincipal.getGrupoPreguntas().preguntas.get(ind).getPregunta().contains(palabraBuscar)){
                 encontradas.add(jframePrincipal.getGrupoPreguntas().preguntas.get(ind));
             }
         }
@@ -246,7 +252,7 @@ public class PnListarPreguntas extends javax.swing.JPanel {
         DefaultListModel listaString = new DefaultListModel();
 
         for(int  ind= 0; ind<encontradas.size();ind++){
-            listaString.addElement(encontradas.get(ind).pregunta);
+            listaString.addElement(encontradas.get(ind).getPregunta());
         }
 
         jList1.setModel(listaString);
@@ -258,6 +264,10 @@ public class PnListarPreguntas extends javax.swing.JPanel {
         jTextField1.setText("");
         cargarPreguntas();
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -287,7 +297,7 @@ public class PnListarPreguntas extends javax.swing.JPanel {
         DefaultListModel listaString = new DefaultListModel();
 
         for(int  ind= 0; ind<jframePrincipal.getGrupoPreguntas().preguntas.size();ind++){
-            listaString.addElement(jframePrincipal.getGrupoPreguntas().preguntas.get(ind).pregunta);
+            listaString.addElement(jframePrincipal.getGrupoPreguntas().preguntas.get(ind).getPregunta());
         }
 
         jList1.setModel(listaString);

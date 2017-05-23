@@ -262,7 +262,7 @@ public class PnModificarPregunta extends javax.swing.JPanel {
         int nivel=Integer.parseInt( jtRespuestaNivel.getText());
         if(nivel>0 && nivel<=3){
         
-        nuevaPregunta=new Pregunta( jtPregunta.getText(),jtRespuestaA.getText(),jtRespuestaB.getText(),jtRespuestaC.getText(),jtRespuestaD.getText(),jtRespuestaSol.getText(),nivel);
+        nuevaPregunta=new Pregunta( jtPregunta.getText(),jtRespuestaSol.getText(),nivel,jtRespuestaA.getText(),jtRespuestaB.getText(),jtRespuestaC.getText(),jtRespuestaD.getText());
         
         jframePrincipal.getGrupoPreguntas().preguntas.remove(indicePregunta);
         jframePrincipal.getGrupoPreguntas().preguntas.add(indicePregunta,nuevaPregunta);
@@ -314,14 +314,14 @@ public class PnModificarPregunta extends javax.swing.JPanel {
               
         btnModificar.setEnabled(true);
         
-        jtPregunta.setText(jframePrincipal.getGrupoPreguntas().preguntas.get(indicePregunta).pregunta.toString());
-        jtRespuestaA.setText(jframePrincipal.getGrupoPreguntas().preguntas.get(indicePregunta).respuesta1.toString());
-        jtRespuestaB.setText(jframePrincipal.getGrupoPreguntas().preguntas.get(indicePregunta).respuesta2.toString());
-        jtRespuestaC.setText(jframePrincipal.getGrupoPreguntas().preguntas.get(indicePregunta).respuesta3.toString());
-        jtRespuestaD.setText(jframePrincipal.getGrupoPreguntas().preguntas.get(indicePregunta).respuesta4.toString());
-        jtRespuestaSol.setText(jframePrincipal.getGrupoPreguntas().preguntas.get(indicePregunta).solucion.toString());
+        jtPregunta.setText(jframePrincipal.getGrupoPreguntas().preguntas.get(indicePregunta).getPregunta().toString());
+        jtRespuestaA.setText(jframePrincipal.getGrupoPreguntas().preguntas.get(indicePregunta).getRespuestas()[0].toString());
+        jtRespuestaB.setText(jframePrincipal.getGrupoPreguntas().preguntas.get(indicePregunta).getRespuestas()[1].toString());
+        jtRespuestaC.setText(jframePrincipal.getGrupoPreguntas().preguntas.get(indicePregunta).getRespuestas()[2].toString());
+        jtRespuestaD.setText(jframePrincipal.getGrupoPreguntas().preguntas.get(indicePregunta).getRespuestas()[3].toString());
+        jtRespuestaSol.setText(jframePrincipal.getGrupoPreguntas().preguntas.get(indicePregunta).getSolucion().toString());
                
-        jtRespuestaNivel.setText(Integer.toString(jframePrincipal.getGrupoPreguntas().preguntas.get(indicePregunta).nivel));
+        jtRespuestaNivel.setText(Integer.toString(jframePrincipal.getGrupoPreguntas().preguntas.get(indicePregunta).getNivel()));
         
         
     }//GEN-LAST:event_jButton2ActionPerformed
