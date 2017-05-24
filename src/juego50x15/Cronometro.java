@@ -34,7 +34,7 @@ public class Cronometro extends Thread{
     
     public void run() {
        
-       for (cont=30;cont>=0;cont--){
+       for (cont=5;cont>=0;cont--){
            
            crono.setText(""+cont);
            
@@ -48,13 +48,15 @@ public class Cronometro extends Thread{
            if (cont==0){
                
                 JOptionPane.showMessageDialog(panelJugar,"Fin de tiempo, Has perdido"); 
+                
                 jframePrincipal.getContentPane().removeAll();
-
+                
+                
                 respuesta =JOptionPane.showConfirmDialog(panelJugar, "¿Desea volver a jugar? Pulse cancelar para salir...");
                 if(respuesta == JOptionPane.YES_OPTION)panelJugar.volverJugar();
                 if(respuesta == JOptionPane.NO_OPTION)panelJugar.volverMenu();
                 if(respuesta == JOptionPane.CANCEL_OPTION) System.exit(0);
-
+                
                 jframePrincipal.validate();
                 jframePrincipal.repaint();
                

@@ -284,7 +284,7 @@ public class PnJugar extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
-        int respuesta;
+        
         
         
         if(btnA.isSelected() || btnB.isSelected() || btnC.isSelected() || btnD.isSelected()){
@@ -318,11 +318,7 @@ public class PnJugar extends javax.swing.JPanel {
                //JOptionPane.showMessageDialog(this,"No es correcto!!!!"); 
                jframePrincipal.getContentPane().removeAll();
 
-               respuesta =JOptionPane.showConfirmDialog(this, "¿Desea volver a jugar? Pulse cancelar para salir...");
-               if(respuesta == JOptionPane.YES_OPTION)volverJugar();
-               if(respuesta == JOptionPane.NO_OPTION)volverMenu();
-               if(respuesta == JOptionPane.CANCEL_OPTION)System.exit(0);
-               if(respuesta == JOptionPane.CLOSED_OPTION)volverMenu();
+               panelPerder();
 
                jframePrincipal.validate();
 
@@ -444,6 +440,17 @@ public class PnJugar extends javax.swing.JPanel {
         
     }
 
+    
+    public void panelPerder(){
+        crono.suspend();
+        int respuesta;
+        respuesta =JOptionPane.showConfirmDialog(this, "¿Desea volver a jugar? Pulse cancelar para salir...");
+        if(respuesta == JOptionPane.YES_OPTION)jframePrincipal.nuevoJuego();
+        if(respuesta == JOptionPane.NO_OPTION)volverMenu();
+        if(respuesta == JOptionPane.CANCEL_OPTION)System.exit(0);
+        if(respuesta == JOptionPane.CLOSED_OPTION)volverMenu();
+    }
+    
     //método para empezar un nuevo juego, reinicia los contodores del jframePrincipal        
     public void volverJugar(){
         jframePrincipal.nuevoJuego();
@@ -597,7 +604,7 @@ public class PnJugar extends javax.swing.JPanel {
         btnD.setBackground(Color.LIGHT_GRAY);
        
         crono.reset();
-        relojActivo=true;
+              
     }
       
     /**
