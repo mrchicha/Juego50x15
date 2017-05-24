@@ -45,7 +45,7 @@ public class Cronometro extends Thread{
            
            if(cont<=10)crono.setForeground(Color.red);
            else crono.setForeground(Color.black);
-           if (cont==0 && panelJugar.isRelojActivo()==true){
+           if (cont==0){
                
                 JOptionPane.showMessageDialog(panelJugar,"Fin de tiempo, Has perdido"); 
                 jframePrincipal.getContentPane().removeAll();

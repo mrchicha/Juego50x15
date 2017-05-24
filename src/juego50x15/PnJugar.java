@@ -21,7 +21,6 @@ import javax.swing.JRadioButton;
  * @author make
  */
 public class PnJugar extends javax.swing.JPanel {
-
      
     private JFramePrincipal jframePrincipal;
     private Cronometro crono;
@@ -52,6 +51,7 @@ public class PnJugar extends javax.swing.JPanel {
         btnComodin50.setVisible(false);
         btnComodinLlamada.setVisible(false);
         
+        jframePrincipal.setJugando(true);
         relojActivo=true;
         crono=new Cronometro(jframePrincipal,this,lblReloj);
         crono.start();
@@ -285,7 +285,7 @@ public class PnJugar extends javax.swing.JPanel {
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
         int respuesta;
-        relojActivo=false;
+        
         
         if(btnA.isSelected() || btnB.isSelected() || btnC.isSelected() || btnD.isSelected()){
             
@@ -315,20 +315,19 @@ public class PnJugar extends javax.swing.JPanel {
             }
 
             else{
-               JOptionPane.showMessageDialog(this,"No es correcto!!!!"); 
+               //JOptionPane.showMessageDialog(this,"No es correcto!!!!"); 
                jframePrincipal.getContentPane().removeAll();
 
                respuesta =JOptionPane.showConfirmDialog(this, "¿Desea volver a jugar? Pulse cancelar para salir...");
                if(respuesta == JOptionPane.YES_OPTION)volverJugar();
                if(respuesta == JOptionPane.NO_OPTION)volverMenu();
                if(respuesta == JOptionPane.CANCEL_OPTION)System.exit(0);
+               if(respuesta == JOptionPane.CLOSED_OPTION)volverMenu();
 
                jframePrincipal.validate();
 
             }
-            
-            
-            lblReloj.setVisible(false);
+                       
             btnAceptar.setEnabled(false);     
         }
         
@@ -447,20 +446,35 @@ public class PnJugar extends javax.swing.JPanel {
 
     //método para empezar un nuevo juego, reinicia los contodores del jframePrincipal        
     public void volverJugar(){
+        jframePrincipal.nuevoJuego();
+        /*
         jframePrincipal.getContentPane().removeAll();
-         
         jframePrincipal.setContadorPreguntas(0);
         jframePrincipal.setContadorDineroAcumulado(0);
         jframePrincipal.setValorAcumulado(0);
         
         jframePrincipal.setPanelJugar(new PnJugar(jframePrincipal));
-        
         jframePrincipal.add(jframePrincipal.getPanelJugar(), BorderLayout.CENTER);
         jframePrincipal.getPanelJugar().cargarPregunta(jframePrincipal.getGrupoPreguntas());
         jframePrincipal.getPanelJugar().setVisible(true);
-        
+        crono.suspend();
         this.validate();
-}        
+        */
+    }       
+    
+    //método para volver el programa al punto de inicio tal y como se inicia
+    public void volverMenu(){
+       
+       jframePrincipal.getContentPane().removeAll();
+       jframePrincipal.enPartida(true);
+       jframePrincipal.setPanelInicio(new PnInicio(jframePrincipal));
+       jframePrincipal.add(jframePrincipal.getPanelInicio(), BorderLayout.CENTER);
+       jframePrincipal.getPanelInicio().setVisible(true);
+       jframePrincipal.validate();
+       jframePrincipal.repaint();
+       crono.suspend();
+       this.validate();
+    }
     
     public void colorRespuesta(){
         if(btnA.isSelected()){
@@ -493,23 +507,7 @@ public class PnJugar extends javax.swing.JPanel {
         }
     }
     
-    //método para volver el programa al punto de inicio tal y como se inicia
-    public void volverMenu(){
-       /* try {
-            crono.join();
-        } catch (InterruptedException ex) {
-            Logger.getLogger(PnJugar.class.getName()).log(Level.SEVERE, null, ex);
-        }
-*/
-       jframePrincipal.getContentPane().removeAll();
         
-       jframePrincipal.setPanelInicio(new PnInicio(jframePrincipal));
-       jframePrincipal.add(jframePrincipal.getPanelInicio(), BorderLayout.CENTER);
-       jframePrincipal.getPanelInicio().setVisible(true);
-       jframePrincipal.validate();
-       jframePrincipal.repaint();
-    }
-    
     //genera un número aleatorio sin repetir y comprueba que la pregunta que saldrá se ajusta al nivel de ronda        
     public int numAleatorio(){
         Random aleatorio=new Random();

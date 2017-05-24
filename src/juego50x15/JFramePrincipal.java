@@ -27,6 +27,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
     private GestionPregunta grupoPreguntas;
     private PnModo panelCambioColor;
     private PnInicio panelInicio;
+    private boolean jugando;
     
     private int contadorPreguntas=0,contadorDineroAcumulado=0,valorAcumulado=0,indicePreguntas=0;
     
@@ -42,7 +43,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
        this.OpMenuIntrPregunta.setVisible(false);
        this.OpMenuListarPregunta.setVisible(false);
        this.OpMenuModPregunta.setVisible(false);
-       
+       jugando =false;
        grupoPreguntas=new GestionPregunta();
        panelInicio=new PnInicio(this);
        this.add(panelInicio, BorderLayout.CENTER);
@@ -57,26 +58,26 @@ public class JFramePrincipal extends javax.swing.JFrame {
 
         jMenuBar1 = new javax.swing.JMenuBar();
         MenuBar = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        OpMenuJugar = new javax.swing.JMenuItem();
         OpMenuListarPregunta = new javax.swing.JMenuItem();
         OpMenuIntrPregunta = new javax.swing.JMenuItem();
         OpMenuModPregunta = new javax.swing.JMenuItem();
         OpMenuSalir = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        OpMenuConfiguracion = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(204, 204, 255));
 
         MenuBar.setText("Menú");
 
-        jMenuItem1.setText("Jugar");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        OpMenuJugar.setText("Jugar");
+        OpMenuJugar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                OpMenuJugarActionPerformed(evt);
             }
         });
-        MenuBar.add(jMenuItem1);
+        MenuBar.add(OpMenuJugar);
 
         OpMenuListarPregunta.setText("Listar pregunta");
         OpMenuListarPregunta.addActionListener(new java.awt.event.ActionListener() {
@@ -114,13 +115,13 @@ public class JFramePrincipal extends javax.swing.JFrame {
 
         jMenu1.setText("Configuración");
 
-        jMenuItem2.setText("Modo juego");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        OpMenuConfiguracion.setText("Modo juego");
+        OpMenuConfiguracion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                OpMenuConfiguracionActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem2);
+        jMenu1.add(OpMenuConfiguracion);
 
         jMenuBar1.add(jMenu1);
 
@@ -130,10 +131,10 @@ public class JFramePrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
    
     //manejador para opción menú jugar
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void OpMenuJugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OpMenuJugarActionPerformed
         nuevoJuego();
     
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_OpMenuJugarActionPerformed
 
 //manejador para opción menú listar pregunta
     private void OpMenuListarPreguntaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OpMenuListarPreguntaActionPerformed
@@ -164,14 +165,14 @@ public class JFramePrincipal extends javax.swing.JFrame {
         modificarPregunta();
     }//GEN-LAST:event_OpMenuModPreguntaActionPerformed
     //manejador opción configuración
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void OpMenuConfiguracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OpMenuConfiguracionActionPerformed
         // TODO add your handling code here:
         this.getContentPane().removeAll();
         panelCambioColor=new PnModo(this);
         this.add(panelCambioColor, BorderLayout.CENTER);
         panelCambioColor.setVisible(true);
         this.validate();
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_OpMenuConfiguracionActionPerformed
 
    
     public static void main(String args[]) {
@@ -209,14 +210,14 @@ public class JFramePrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu MenuBar;
+    private javax.swing.JMenuItem OpMenuConfiguracion;
     private javax.swing.JMenuItem OpMenuIntrPregunta;
+    private javax.swing.JMenuItem OpMenuJugar;
     private javax.swing.JMenuItem OpMenuListarPregunta;
     private javax.swing.JMenuItem OpMenuModPregunta;
     private javax.swing.JMenuItem OpMenuSalir;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     // End of variables declaration//GEN-END:variables
 
 
@@ -228,7 +229,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
         valorAcumulado=0;
         
         panelJugar=new PnJugar(this);
-        
+        enPartida(false);
         this.add(panelJugar, BorderLayout.CENTER);
         panelJugar.cargarPregunta(grupoPreguntas);
         panelJugar.setVisible(true);
@@ -236,6 +237,14 @@ public class JFramePrincipal extends javax.swing.JFrame {
         this.validate();
  }
  
+    public void enPartida(boolean b){
+            OpMenuJugar.setEnabled(b);
+            OpMenuIntrPregunta.setEnabled(b);
+            OpMenuModPregunta.setEnabled(b);
+            OpMenuListarPregunta.setEnabled(b);
+            OpMenuConfiguracion.setEnabled(b);
+                
+    }
 
     public void modificarPregunta(){
      this.getContentPane().removeAll();
@@ -251,9 +260,19 @@ public class JFramePrincipal extends javax.swing.JFrame {
            this.OpMenuIntrPregunta.setVisible(b);
            this.OpMenuListarPregunta.setVisible(b);
            this.OpMenuModPregunta.setVisible(b);
+          
     }
  
     //getter and setter
+    
+    public boolean isJugando() {
+        return jugando;
+    }
+
+    public void setJugando(boolean jugando) {
+        this.jugando = jugando;
+    }
+
     public void setPanelInicio(PnInicio panelInicio) {
         this.panelInicio = panelInicio;
     }
